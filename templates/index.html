@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My flask app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body style="background-color:#EEE2DC">
+<div class="container text-center mt-3 mb-3">
+    <div class="intro mt-3 mb-3"><h1>My Review Scrapper</h1></div>
+    <div class="enter_key mt-3 mb-3"><h3>Enter your product</h3></div>
+       <div class="form">
+           <form action="/review" method="POST">
+               <input type="text" name="content" id="content">
+               <input type="submit" value="Search">
+           </form>
+       </div>
+    </div>
+</body>
+</html>

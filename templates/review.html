@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My review page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body style="background-color:#EEE2DC">
+<div class="container text-center mt-3">
+    <div class="header">
+        <h1>Here are your reviews from Flipkart!!</h1>
+    </div>
+    <div class="review_Table mt-4">
+        <table class="table table-bordered ">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">User Name</th>
+                <th scope="col">User Rating</th>
+                <th scope="col">Comment Heading</th>
+                <th scope="col">Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for review in reviewsList %}
+            <tr>
+                <th scope="row">{{review['Product']}}</th>
+                <td>{{review['Name']}}</td>
+                <td>{{review['Rating']}}</td>
+                <td>{{review['CommentHead']}}</td>
+                <td>{{review['Comment']}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
