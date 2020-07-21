@@ -19,22 +19,24 @@ def home_page():
 def review_page():
     print(request,"\n")
     print(request.get_json())
-    searchString = request.form['content'].replace(" ","")
+    searchString = request.form['content']
     print(searchString)
     try:
-        resp = requests.get("https://www.flipkart.com/search?q=" + searchString)
+        resp = requests.get("https://www.flipkart.com/search?q=" + searchString.replace(" ","%20"))
         print(resp.status_code)
         # print(resp.text)
 
         soup = BeautifulSoup(resp.text, 'html.parser')
 
         l = soup.find("div", {"class": "_3wU53n"})
-        bigboxes = soup.findAll("div", {"class": "bhgxx2 col-12-12"})
+        bigboxes = soup.findAll("div", {"class": "_3O0U0u"})
         print(bigboxes)
         print("-----")
-        del bigboxes[0:3]
+        print(bigboxes[0])
+        #del bigboxes[0:3]
         box = bigboxes[0]
-        productLink = "https://www.flipkart.com" + box.div.div.div.a['href']
+        print("box \n ---",box)
+        productLink = "https://www.flipkart.com" + box.div.div.a['href']
         print(box)
         print("-----")
         print(productLink)
@@ -77,11 +79,11 @@ def review_page():
                       "Comment": commentContent}
 
             reviewsList.append(mydict)
-
-        reviewsList.pop()
-        print(reviewsList)
-        print(reviewsList[0].keys())
-        return render_template("review.html", reviewsList=reviewsList)
+        if(len(reviewsList)>1):
+            reviewsList.pop()
+            return render_template("review.html", reviewsList=reviewsList)
+        else:
+            return render_template("fail.html")
     except :
         return render_template("index.html")
 
